@@ -1,8 +1,9 @@
 # Spring MVC 웹 게시판
 
 ## 📌 개요
-스프링 웹 프레임워크에서 글을 작성하고, 댓글을 달 수 있는 <br>
-스프링 MVC 게시판을 만들어 보았습니다. <br>
+스프링 웹 프레임워크를 이용해서 <br> 
+게시물을 작성하고, 댓글을 달 수 있는 간단한 *웹 게시판* 을 만들어 보았습니다. <br>
+
 [블로그](https://velog.io/@heegonkim_/Spring-%EC%8A%A4%ED%94%84%EB%A7%81-MVC-%EC%9B%B9-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B2%8C%EC%8B%9C%ED%8C%90-%EB%A7%8C%EB%93%A4%EA%B8%B0-Heegons-Board) <br>
 [시연영상](https://youtu.be/bwIsmcJjieo?si=cxLkADZhO2yxvDpY) <br>
 
