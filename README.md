@@ -13,17 +13,18 @@
   *댓글 작성* <br>
 
 * **기술 스택** <br>
-  *DB : MySQL (JDBC)* <br>
+  *언어 : Java* <br>
   *Framework : Spring (Spring MVC Project)* <br>
+  *DB : MySQL (JDBC)* <br>
   *CSS : BootStrap* <br>
 
 ## 📌 DB : table
 
-**member** <br>
+**user** <br>
 *회원가입, 로그인, 로그아웃 등 유저들의 기본적인 서비스 접속을 위해 필요한 테이블* <br>
 <img width="50%" height="auto" alt="image" src="https://github.com/user-attachments/assets/c0ce9cd7-b308-4473-b5b1-ecab9a65efc2" />
 
-**mvc_board** <br>
+**board** <br>
 *글과 댓글 작성을 위해 필요한 테이블* <br>
 <img width="50%" height="auto" alt="image" src="https://github.com/user-attachments/assets/c7b60cb1-a752-49c1-ae58-02450c7279be" />
 
