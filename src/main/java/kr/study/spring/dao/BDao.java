@@ -38,7 +38,7 @@ public class BDao {
 	      try {
 	         connection = dataSource.getConnection();
 	         String query 
-	         = "insert into mvc_board (bName, bTitle, bContent, bHit, bStep, bIndent) "
+	         = "insert into board (bName, bTitle, bContent, bHit, bStep, bIndent) "
 	               + "values (?, ?, ?, 0, 0, 0 )";
 	         preparedStatement = connection.prepareStatement(query);
 	         preparedStatement.setString(1, bName);
@@ -68,7 +68,7 @@ public class BDao {
 	      int rn = 0;
 	      
 	      try {
-	         String query = "UPDATE mvc_board SET bGroup = bId WHERE bId = LAST_INSERT_ID()";
+	         String query = "UPDATE board SET bGroup = bId WHERE bId = LAST_INSERT_ID()";
 	         preparedStatement = connection.prepareStatement(query);
 	         
 	         rn = preparedStatement.executeUpdate();
@@ -98,7 +98,7 @@ public class BDao {
 	      try {
 	         connection = dataSource.getConnection();
 	         
-	         String query = "select bId, bName, bTitle, bContent, bDate, bHit, bGroup, bStep, bIndent from mvc_board order by bGroup desc, bStep asc";
+	         String query = "select bId, bName, bTitle, bContent, bDate, bHit, bGroup, bStep, bIndent from board order by bGroup desc, bStep asc";
 	         preparedStatement = connection.prepareStatement(query);
 	         resultSet = preparedStatement.executeQuery();
 	         
@@ -143,7 +143,7 @@ public class BDao {
 	    
 	    try {
 	    	connection = dataSource.getConnection();
-	    	String query = "select * from mvc_board where bId = ?";
+	    	String query = "select * from board where bId = ?";
 	    	
 	    	preparedStatement = connection.prepareStatement(query);
 	    	preparedStatement.setInt(1, Integer.parseInt(strId));
@@ -185,7 +185,7 @@ public class BDao {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "update mvc_board set bHit = bHit + 1 where bId = ?";
+			String query = "update board set bHit = bHit + 1 where bId = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, bId);
 			
@@ -208,7 +208,7 @@ public class BDao {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "update mvc_board set bStep = bStep + 1 where bId = ?";
+			String query = "update board set bStep = bStep + 1 where bId = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, bId);
 			
@@ -231,7 +231,7 @@ public class BDao {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "update mvc_board set bIndent = bIndent + 1 where bId = ?";
+			String query = "update board set bIndent = bIndent + 1 where bId = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, bId);
 			
@@ -254,7 +254,7 @@ public class BDao {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "update mvc_board set bName = ?, bTitle = ?, bContent = ? where bId = ?";
+			String query = "update board set bName = ?, bTitle = ?, bContent = ? where bId = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, bName);
 			preparedStatement.setString(2, bTitle);
@@ -280,7 +280,7 @@ public class BDao {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "delete from mvc_board where bId = ?";
+			String query = "delete from board where bId = ?";
 			
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, bId);
@@ -307,7 +307,7 @@ public class BDao {
 	    try {
 	        connection = dataSource.getConnection();
 
-	        String sql = "select bGroup, bStep, bIndent from mvc_board where bId =?";
+	        String sql = "select bGroup, bStep, bIndent from board where bId =?";
 	        pstmt = connection.prepareStatement(sql);
 	        pstmt.setInt(1, Integer.parseInt(strId));
 	        
@@ -326,14 +326,14 @@ public class BDao {
 	        rs.close();
 	        pstmt.close();
 	        
-	        sql = "update mvc_board set bStep = bStep + 1 where bGroup = ? and bStep > ?";
+	        sql = "update board set bStep = bStep + 1 where bGroup = ? and bStep > ?";
 	        pstmt = connection.prepareStatement(sql);
 	        pstmt.setInt(1, bGroup);
 	        pstmt.setInt(2, bStep);
 	        pstmt.executeUpdate();
 	        pstmt.close();
 
-	        sql = "insert into mvc_board (bName, bTitle, bContent, bGroup, bStep, bIndent, bHit) " +
+	        sql = "insert into board (bName, bTitle, bContent, bGroup, bStep, bIndent, bHit) " +
 	              "values (?, ?, ?, ?, ?, ?, 0)";
 	        pstmt = connection.prepareStatement(sql);
 	        pstmt.setString(1, bName);

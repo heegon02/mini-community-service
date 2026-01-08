@@ -37,7 +37,7 @@ public class Dao {
         Connection conn = null;
         PreparedStatement ps = null;
 
-        String sql = "INSERT INTO member (userId, password, email, name, residentNumber, address, detailAddress, birth, interest, introduce) " +
+        String sql = "INSERT INTO user (userId, password, email, name, residentNumber, address, detailAddress, birth, interest, introduce) " +
                      "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
@@ -74,7 +74,7 @@ public class Dao {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        String sql = "select * from member where userId = ? and password = ?";
+        String sql = "select * from user where userId = ? and password = ?";
         
         try {
         	conn = dataSource.getConnection();
@@ -111,7 +111,7 @@ public class Dao {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        String sql = "SELECT name FROM member WHERE userId = ?";
+        String sql = "SELECT name FROM user WHERE userId = ?";
 
         try {
             conn = dataSource.getConnection();
@@ -145,7 +145,7 @@ public class Dao {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        String sql = "SELECT * FROM member WHERE userId = ?";
+        String sql = "SELECT * FROM user WHERE userId = ?";
 
         try {
             conn = dataSource.getConnection();
@@ -193,7 +193,7 @@ public class Dao {
     		Connection conn = null;
     		PreparedStatement ps = null;
 
-    		String sql = "UPDATE member SET password=?, email=?, name=?, address=?, detailAddress=?, interest=?, introduce=? "
+    		String sql = "UPDATE user SET password=?, email=?, name=?, address=?, detailAddress=?, interest=?, introduce=? "
     					+ "WHERE userId=?";
 
     		try {
