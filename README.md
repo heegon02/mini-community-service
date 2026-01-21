@@ -1,4 +1,4 @@
-# Spring MVC 웹 게시판
+# mini-community-service
 
 ## 📌 개요
 스프링 웹 프레임워크를 이용해서 <br> 
