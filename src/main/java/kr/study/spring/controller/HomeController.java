@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.study.spring.command.BCommand;
 import kr.study.spring.command.BContentCommand;
@@ -111,72 +112,84 @@ public class HomeController {
 		return "redirect:main";
 	}
 	
+	//////////////////////////////////////
+	//게시글 작성, 수정, 삭제 관련
+	//////////////////////////////////////
 		
+	//글 작성을 위한 초기 화면
+	@RequestMapping("/write_view")
+	public String write_view() {
+		return "write_view";
+	}
 		
-		//글 작성 초기 화면
-		@RequestMapping("/write_view")
-		public String write_view() {
-			return "write_view";
-		}
-		
-		//글 작성
-		@RequestMapping("/write")
-		public String write(HttpServletRequest request, Model model) {
-			model.addAttribute("request", request);
-			bcommand = new BWriteCommand();
-			bcommand.execute(model);
+	//글 작성
+	@RequestMapping("/write")
+	public String write(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		bcommand = new BWriteCommand();
+		bcommand.execute(model);
 			
-			return "redirect:main";
-		}
+		return "redirect:main";
+	}
 		
-		//글 내용 보여주기
-		@RequestMapping("/content_view")
-		public String content_view(HttpServletRequest request, Model model) {
-			model.addAttribute("request", request);
-			bcommand = new BContentCommand();
-			bcommand.execute(model);
+	//글 상세 내용 보여주기
+	@RequestMapping("/content_view")
+	public String content_view(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		bcommand = new BContentCommand();
+		bcommand.execute(model);
 			
-			return "content_view";
-		}
+		return "content_view";
+	}
 		
-		//수정
-		@RequestMapping(value="/modify", method=RequestMethod.POST)
-		public String modify(HttpServletRequest request, Model model) {
-			model.addAttribute("request", request);
-			bcommand = new BModifyCommand();
-			bcommand.execute(model);
-			
-			return "redirect:main";
-		}
+	//글 내용 수정 로직 (상세 내용 페이지에서 바로 수정 가능)
+	@RequestMapping(value="/modify", method=RequestMethod.POST)
+	public String modify(
+			HttpServletRequest request, 
+			Model model, 
+			RedirectAttributes rttr) {
+		model.addAttribute("request", request);
+		bcommand = new BModifyCommand();
+		bcommand.execute(model);
 		
-		//글 삭제
-		@RequestMapping("/delete")
-		public String delete(HttpServletRequest request, Model model) {
-			model.addAttribute("request", request);
-			bcommand = new BDeleteCommand();
-			bcommand.execute(model);
-			
-			return "redirect:main";
-		}
+		rttr.addFlashAttribute("msg", "수정 되었습니다.");
 		
-		//댓글 작성을 위한 뷰페이지
-		@RequestMapping("/reply_view")
-		public String reply_view(HttpServletRequest request, Model model) {
-			model.addAttribute("request", request);
-			bcommand = new BReply();
-			bcommand.execute(model);
-			
-			return "reply_view";
-		}
+		String bId = request.getParameter("bId");
+		return "redirect:content_view?bId=" + bId;
+	}
 		
-		//댓글 업데이트
-	    @RequestMapping(value="/reply", method=RequestMethod.POST)
-		public String reply(HttpServletRequest request, Model model) {
-			model.addAttribute("request", request);
-			bcommand = new BReplyUpdate();
-			bcommand.execute(model);
+	//글 삭제
+	@RequestMapping("/delete")
+	public String delete(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		bcommand = new BDeleteCommand();
+		bcommand.execute(model);
 			
-			return "redirect:main";
-		}
+		return "redirect:main";
+	}
+	
+	///////////////////////////
+	// 댓글 관련
+	///////////////////////////
+	
+	//댓글 작성을 위한 뷰페이지
+	@RequestMapping("/reply_view")
+	public String reply_view(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		bcommand = new BReply();
+		bcommand.execute(model);
+			
+		return "reply_view";
+	}
+		
+	//댓글 업데이트
+	@RequestMapping(value="/reply", method=RequestMethod.POST)
+	public String reply(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		bcommand = new BReplyUpdate();
+		bcommand.execute(model);
+			
+		return "redirect:main";
+	}
 	
 }
