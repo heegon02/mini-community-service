@@ -234,5 +234,17 @@
 <!-- Bootstrap JS (선택사항, 있어도 되고 없어도 됨) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
+<%
+    String msg = (String) request.getAttribute("msg");
+    if (msg != null) {
+%>
+    <script>
+        alert("<%= msg %>");
+    </script>
+<%
+    }
+%>
+
+
 </body>
 </html>
