@@ -1,25 +1,21 @@
 # mini-community-service
 
-## 📌 개요
-스프링 웹 프레임워크를 이용해서 <br> 
-게시물을 작성하고, 댓글을 달 수 있는 간단한 *웹 게시판* 을 만들어 보았습니다. <br>
-
-[블로그](https://velog.io/@heegonkim_/Spring-%EC%8A%A4%ED%94%84%EB%A7%81-MVC-%EC%9B%B9-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B2%8C%EC%8B%9C%ED%8C%90-%EB%A7%8C%EB%93%A4%EA%B8%B0-Heegons-Board) <br>
+## 📌 프로젝트 소개
+스프링 웹 프레임워크를 이용해서 게시물을 작성하고, 댓글을 달 수 있는 간단한 웹 게시판을 만들어 보았습니다. <br>
 [시연영상](https://youtu.be/bwIsmcJjieo?si=cxLkADZhO2yxvDpY) <br>
 
-* **구현 기능** <br>
-  *회원가입, 로그인, 로그아웃* <br>
-  *개인정보수정* <br>
-  *새 글 작성, 글 수정, 글 삭제* <br>
-  *댓글 작성* <br>
+## 👍 기능
+회원가입, 로그인, 로그아웃<br>
+개인정보수정<br>
+새 글 작성, 글 수정, 글 삭제<br>
+댓글 작성<br>
 
-* **기술 스택** <br>
-  *언어 : Java* <br>
-  *Framework : Spring (Spring MVC Project)* <br>
-  *DB : MySQL (JDBC)* <br>
-  *CSS : BootStrap* <br>
+## 🛠️ 기술 스택
+Framework : Spring (Spring MVC Project)<br>
+DB : MySQL (JDBC) <br>
+CSS : BootStrap <br>
 
-## 📌 DB : table
+## ✅ DB : table
 
 **user** <br>
 *회원가입, 로그인, 로그아웃 등 유저들의 기본적인 서비스 접속을 위해 필요한 테이블* <br>
@@ -29,7 +25,7 @@
 *글과 댓글 작성을 위해 필요한 테이블* <br>
 <img width="50%" height="auto" alt="image" src="https://github.com/user-attachments/assets/c7b60cb1-a752-49c1-ae58-02450c7279be" />
 
-## 📌 화면 UI
+## 📌 서비스 프리뷰
 
 **login.jsp** <br>
 <img width="1917" height="auto" alt="image" src="https://github.com/user-attachments/assets/69d9a037-70f8-4e92-be8a-5f7ee2fa3c46" />
